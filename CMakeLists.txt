@@ -38,5 +38,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Vulkan)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 target_link_libraries(${PROJECT_NAME} PRIVATE assimp)
 
-target_include_directories(${PROJECT_NAME} PRIVATE glm)
+target_include_directories(${PROJECT_NAME} PRIVATE external/glm)
 target_include_directories(${PROJECT_NAME} PRIVATE Vulkan)
