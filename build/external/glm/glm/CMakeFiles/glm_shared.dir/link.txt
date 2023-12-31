@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g -shared -Wl,-soname,libglm_sharedd.so -o libglm_sharedd.so CMakeFiles/glm_shared.dir/detail/glm.cpp.o 
