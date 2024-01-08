@@ -55,6 +55,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/unit.dir/unit/ImportExport/MDL/utMDLImporter_HL1_Materials.cpp.o.d"
   "CMakeFiles/unit.dir/unit/ImportExport/MDL/utMDLImporter_HL1_Nodes.cpp.o"
   "CMakeFiles/unit.dir/unit/ImportExport/MDL/utMDLImporter_HL1_Nodes.cpp.o.d"
+  "CMakeFiles/unit.dir/unit/ImportExport/Pbrt/utPbrtImportExport.cpp.o"
+  "CMakeFiles/unit.dir/unit/ImportExport/Pbrt/utPbrtImportExport.cpp.o.d"
   "CMakeFiles/unit.dir/unit/ImportExport/RAW/utRAWImportExport.cpp.o"
   "CMakeFiles/unit.dir/unit/ImportExport/RAW/utRAWImportExport.cpp.o.d"
   "CMakeFiles/unit.dir/unit/ImportExport/Terragen/utTerragenImportExport.cpp.o"

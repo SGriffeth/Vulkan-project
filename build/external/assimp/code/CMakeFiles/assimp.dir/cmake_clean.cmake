@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "../bin/libassimpd.pdb"
-  "../bin/libassimpd.so"
-  "../bin/libassimpd.so.5"
-  "../bin/libassimpd.so.5.3.0"
+  "../bin/libassimp.pdb"
+  "../bin/libassimp.so"
+  "../bin/libassimp.so.5"
+  "../bin/libassimp.so.5.3.0"
   "../lib/.5"
   "CMakeFiles/assimp.dir/AssetLib/3DS/3DSConverter.cpp.o"
   "CMakeFiles/assimp.dir/AssetLib/3DS/3DSConverter.cpp.o.d"

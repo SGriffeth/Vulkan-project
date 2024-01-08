@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sgriffeth/vulkan_project
+CMAKE_SOURCE_DIR = /home/sgriffeth/Vulkan-project_0
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sgriffeth/vulkan_project/build
+CMAKE_BINARY_DIR = /home/sgriffeth/Vulkan-project_0/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/MINEANARCHY.dir/depend.make
@@ -70,68 +70,196 @@ include CMakeFiles/MINEANARCHY.dir/progress.make
 include CMakeFiles/MINEANARCHY.dir/flags.make
 
 CMakeFiles/MINEANARCHY.dir/main.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
-CMakeFiles/MINEANARCHY.dir/main.cpp.o: /home/sgriffeth/vulkan_project/main.cpp
+CMakeFiles/MINEANARCHY.dir/main.cpp.o: /home/sgriffeth/Vulkan-project_0/main.cpp
 CMakeFiles/MINEANARCHY.dir/main.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/vulkan_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MINEANARCHY.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/main.cpp.o -MF CMakeFiles/MINEANARCHY.dir/main.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/main.cpp.o -c /home/sgriffeth/vulkan_project/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MINEANARCHY.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/main.cpp.o -MF CMakeFiles/MINEANARCHY.dir/main.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/main.cpp.o -c /home/sgriffeth/Vulkan-project_0/main.cpp
 
 CMakeFiles/MINEANARCHY.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/vulkan_project/main.cpp > CMakeFiles/MINEANARCHY.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/main.cpp > CMakeFiles/MINEANARCHY.dir/main.cpp.i
 
 CMakeFiles/MINEANARCHY.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/vulkan_project/main.cpp -o CMakeFiles/MINEANARCHY.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/main.cpp -o CMakeFiles/MINEANARCHY.dir/main.cpp.s
+
+CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
+CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o: /home/sgriffeth/Vulkan-project_0/HelloTriangleApplication.cpp
+CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o -MF CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o -c /home/sgriffeth/Vulkan-project_0/HelloTriangleApplication.cpp
+
+CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/HelloTriangleApplication.cpp > CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.i
+
+CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/HelloTriangleApplication.cpp -o CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.s
 
 CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
-CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o: /home/sgriffeth/vulkan_project/descriptorManager.cpp
+CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o: /home/sgriffeth/Vulkan-project_0/descriptorManager.cpp
 CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/vulkan_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o -MF CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o -c /home/sgriffeth/vulkan_project/descriptorManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o -MF CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o -c /home/sgriffeth/Vulkan-project_0/descriptorManager.cpp
 
 CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/vulkan_project/descriptorManager.cpp > CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/descriptorManager.cpp > CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.i
 
 CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/vulkan_project/descriptorManager.cpp -o CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/descriptorManager.cpp -o CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.s
 
 CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
-CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o: /home/sgriffeth/vulkan_project/skeletalAnimation.cpp
+CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o: /home/sgriffeth/Vulkan-project_0/skeletalAnimation.cpp
 CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/vulkan_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o -MF CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o -c /home/sgriffeth/vulkan_project/skeletalAnimation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o -MF CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o -c /home/sgriffeth/Vulkan-project_0/skeletalAnimation.cpp
 
 CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/vulkan_project/skeletalAnimation.cpp > CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/skeletalAnimation.cpp > CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.i
 
 CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/vulkan_project/skeletalAnimation.cpp -o CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/skeletalAnimation.cpp -o CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.s
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o: /home/sgriffeth/Vulkan-project_0/external/imgui/imgui.cpp
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o -MF CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o -c /home/sgriffeth/Vulkan-project_0/external/imgui/imgui.cpp
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/external/imgui/imgui.cpp > CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.i
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/external/imgui/imgui.cpp -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.s
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o: /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_demo.cpp
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o -MF CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o -c /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_demo.cpp
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_demo.cpp > CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.i
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_demo.cpp -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.s
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o: /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_draw.cpp
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o -MF CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o -c /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_draw.cpp
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_draw.cpp > CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.i
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_draw.cpp -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.s
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o: /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_tables.cpp
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o -MF CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o -c /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_tables.cpp
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_tables.cpp > CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.i
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_tables.cpp -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.s
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o: /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_widgets.cpp
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o -MF CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o -c /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_widgets.cpp
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_widgets.cpp > CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.i
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/external/imgui/imgui_widgets.cpp -o CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.s
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o: /home/sgriffeth/Vulkan-project_0/external/imgui/backends/imgui_impl_vulkan.cpp
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o -MF CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o -c /home/sgriffeth/Vulkan-project_0/external/imgui/backends/imgui_impl_vulkan.cpp
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/external/imgui/backends/imgui_impl_vulkan.cpp > CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.i
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/external/imgui/backends/imgui_impl_vulkan.cpp -o CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.s
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o: CMakeFiles/MINEANARCHY.dir/flags.make
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o: /home/sgriffeth/Vulkan-project_0/external/imgui/backends/imgui_impl_glfw.cpp
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o: CMakeFiles/MINEANARCHY.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o -MF CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o.d -o CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o -c /home/sgriffeth/Vulkan-project_0/external/imgui/backends/imgui_impl_glfw.cpp
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgriffeth/Vulkan-project_0/external/imgui/backends/imgui_impl_glfw.cpp > CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.i
+
+CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgriffeth/Vulkan-project_0/external/imgui/backends/imgui_impl_glfw.cpp -o CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.s
 
 # Object files for target MINEANARCHY
 MINEANARCHY_OBJECTS = \
 "CMakeFiles/MINEANARCHY.dir/main.cpp.o" \
+"CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o" \
 "CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o" \
-"CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o"
+"CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o" \
+"CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o" \
+"CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o" \
+"CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o" \
+"CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o" \
+"CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o" \
+"CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o" \
+"CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o"
 
 # External object files for target MINEANARCHY
 MINEANARCHY_EXTERNAL_OBJECTS =
 
 MINEANARCHY: CMakeFiles/MINEANARCHY.dir/main.cpp.o
+MINEANARCHY: CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o
 MINEANARCHY: CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.o
 MINEANARCHY: CMakeFiles/MINEANARCHY.dir/skeletalAnimation.cpp.o
+MINEANARCHY: CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o
+MINEANARCHY: CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o
+MINEANARCHY: CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o
+MINEANARCHY: CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o
+MINEANARCHY: CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o
+MINEANARCHY: CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o
+MINEANARCHY: CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o
 MINEANARCHY: CMakeFiles/MINEANARCHY.dir/build.make
 MINEANARCHY: /usr/lib64/libvulkan.so
 MINEANARCHY: /usr/local/lib64/libglfw3.a
-MINEANARCHY: external/assimp/bin/libassimpd.so.5.3.0
+MINEANARCHY: external/assimp/bin/libassimp.so.5.3.0
 MINEANARCHY: /usr/lib64/librt.a
 MINEANARCHY: /usr/lib64/libm.so
-MINEANARCHY: external/assimp/contrib/zlib/libzlibstaticd.a
+MINEANARCHY: /usr/lib64/libz.so
 MINEANARCHY: CMakeFiles/MINEANARCHY.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/sgriffeth/vulkan_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable MINEANARCHY"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/sgriffeth/Vulkan-project_0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable MINEANARCHY"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MINEANARCHY.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -143,6 +271,6 @@ CMakeFiles/MINEANARCHY.dir/clean:
 .PHONY : CMakeFiles/MINEANARCHY.dir/clean
 
 CMakeFiles/MINEANARCHY.dir/depend:
-	cd /home/sgriffeth/vulkan_project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sgriffeth/vulkan_project /home/sgriffeth/vulkan_project /home/sgriffeth/vulkan_project/build /home/sgriffeth/vulkan_project/build /home/sgriffeth/vulkan_project/build/CMakeFiles/MINEANARCHY.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/sgriffeth/Vulkan-project_0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sgriffeth/Vulkan-project_0 /home/sgriffeth/Vulkan-project_0 /home/sgriffeth/Vulkan-project_0/build /home/sgriffeth/Vulkan-project_0/build /home/sgriffeth/Vulkan-project_0/build/CMakeFiles/MINEANARCHY.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/MINEANARCHY.dir/depend
 

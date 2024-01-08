@@ -5,5 +5,5 @@ Name: MINEANARCHY
 Description: Import various well-known 3D model formats in an uniform manner.
 Version: 5.3.0
 Libs: -L${libdir} -lassimp
-Libs.private: -lstdc++ 
+Libs.private: -lstdc++ -lz
 Cflags: -I${includedir}

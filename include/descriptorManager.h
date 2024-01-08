@@ -1,15 +1,20 @@
-#ifndef HELLO_TRIANGLE_APP
+/*#ifndef HELLO_TRIANGLE_APP
 #include <HelloTriangleApplication.h>
 #define HELLO_TRIANGLE_APP
-#endif
-#include <assimp/scene.h>
+#endif*/
 #include <glm/glm.hpp>
+#include <vector>
+#include <array>
+#include <vulkan/vulkan.h>
+#include <assimp/scene.h>
+
+class HelloTriangleApplication;
 
 class descriptorManager
 {
 private:
     /* data */
-    VkDescriptorSetLayout layouts[2];
+    std::vector<VkDescriptorSetLayout> layouts;
     VkDescriptorPool mvpPool;
     VkDescriptorPool bonesPool;
     struct uboBuffer {
@@ -20,9 +25,9 @@ private:
     std::vector<uboBuffer> mvpUbos;
     std::vector<uboBuffer> boneUbos;
     
-    HelloTriangleApplication* app;
-    void allocateUbos();
+    void allocateUbos(HelloTriangleApplication& app);
 public:
+    descriptorManager();
     static const unsigned int BONES_COUNT = 100;
     struct boneBuffer {
         aiMatrix4x4 bones[descriptorManager::BONES_COUNT];
@@ -33,9 +38,7 @@ public:
         glm::mat4 view;
         glm::mat4 proj;
     };
-    descriptorManager(HelloTriangleApplication* app);
-
-    VkDescriptorSetLayout* createDescriptorSetLayouts();
-    void createDescriptorSets(std::vector<VkDescriptorSet>& mvpSets, std::vector<VkDescriptorSet>& bonesSets);
+    VkDescriptorSetLayout* createDescriptorSetLayouts(HelloTriangleApplication& app);
+    void createDescriptorSets(HelloTriangleApplication& app, std::vector<VkDescriptorSet>& mvpSets, std::vector<VkDescriptorSet>& bonesSets);
     void updateUbos(boneBuffer, mvpBuffer, uint);
 };

@@ -1,4 +1,4 @@
-# Install script for directory: /home/sgriffeth/vulkan_project/external/assimp
+# Install script for directory: /home/sgriffeth/Vulkan-project_0/external/assimp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
+    set(CMAKE_INSTALL_CONFIG_NAME "")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -44,8 +44,8 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp5.3.0-dev" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/cmake/assimp-5.3" TYPE FILE FILES
-    "/home/sgriffeth/vulkan_project/build/external/assimp/generated/assimpConfig.cmake"
-    "/home/sgriffeth/vulkan_project/build/external/assimp/generated/assimpConfigVersion.cmake"
+    "/home/sgriffeth/Vulkan-project_0/build/external/assimp/generated/assimpConfig.cmake"
+    "/home/sgriffeth/Vulkan-project_0/build/external/assimp/generated/assimpConfigVersion.cmake"
     )
 endif()
 
@@ -53,7 +53,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp5.3.0-dev" OR NOT CMAKE_INSTALL_CO
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/cmake/assimp-5.3/assimpTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/cmake/assimp-5.3/assimpTargets.cmake"
-         "/home/sgriffeth/vulkan_project/build/external/assimp/CMakeFiles/Export/433f70bbb4e477ee4529b3c8b19ce767/assimpTargets.cmake")
+         "/home/sgriffeth/Vulkan-project_0/build/external/assimp/CMakeFiles/Export/433f70bbb4e477ee4529b3c8b19ce767/assimpTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib64/cmake/assimp-5.3/assimpTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -66,21 +66,20 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp5.3.0-dev" OR NOT CMAKE_INSTALL_CO
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/cmake/assimp-5.3" TYPE FILE FILES "/home/sgriffeth/vulkan_project/build/external/assimp/CMakeFiles/Export/433f70bbb4e477ee4529b3c8b19ce767/assimpTargets.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/cmake/assimp-5.3" TYPE FILE FILES "/home/sgriffeth/vulkan_project/build/external/assimp/CMakeFiles/Export/433f70bbb4e477ee4529b3c8b19ce767/assimpTargets-debug.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/cmake/assimp-5.3" TYPE FILE FILES "/home/sgriffeth/Vulkan-project_0/build/external/assimp/CMakeFiles/Export/433f70bbb4e477ee4529b3c8b19ce767/assimpTargets.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/cmake/assimp-5.3" TYPE FILE FILES "/home/sgriffeth/Vulkan-project_0/build/external/assimp/CMakeFiles/Export/433f70bbb4e477ee4529b3c8b19ce767/assimpTargets-noconfig.cmake")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "libassimp5.3.0-dev" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/pkgconfig" TYPE FILE FILES "/home/sgriffeth/vulkan_project/build/external/assimp/assimp.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib64/pkgconfig" TYPE FILE FILES "/home/sgriffeth/Vulkan-project_0/build/external/assimp/assimp.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/sgriffeth/vulkan_project/build/external/assimp/contrib/zlib/cmake_install.cmake")
-  include("/home/sgriffeth/vulkan_project/build/external/assimp/code/cmake_install.cmake")
-  include("/home/sgriffeth/vulkan_project/build/external/assimp/test/cmake_install.cmake")
+  include("/home/sgriffeth/Vulkan-project_0/build/external/assimp/code/cmake_install.cmake")
+  include("/home/sgriffeth/Vulkan-project_0/build/external/assimp/test/cmake_install.cmake")
 
 endif()
 

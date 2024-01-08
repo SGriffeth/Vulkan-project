@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sgriffeth/vulkan_project/include -I/home/sgriffeth/vulkan_project/glm -I/home/sgriffeth/vulkan_project/Vulkan -I/home/sgriffeth/vulkan_project/external/assimp/code/../include -I/home/sgriffeth/vulkan_project/build/external/assimp/code/../include
+CXX_INCLUDES = -I/home/sgriffeth/Vulkan-project_0/include -I/home/sgriffeth/Vulkan-project_0/external/glm -I/home/sgriffeth/Vulkan-project_0/Vulkan -I/home/sgriffeth/Vulkan-project_0/external/imgui -I/home/sgriffeth/Vulkan-project_0/external/assimp/code/../include -I/home/sgriffeth/Vulkan-project_0/build/external/assimp/code/../include
 
-CXX_FLAGS = -g
+CXX_FLAGS = 
 

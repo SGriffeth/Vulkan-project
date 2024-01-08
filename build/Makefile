@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sgriffeth/vulkan_project
+CMAKE_SOURCE_DIR = /home/sgriffeth/Vulkan-project_0
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sgriffeth/vulkan_project/build
+CMAKE_BINARY_DIR = /home/sgriffeth/Vulkan-project_0/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,7 +87,7 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\" \"assimp-dev\" \"libassimp5.3.0\" \"libassimp5.3.0-dev\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"assimp-dev\" \"libassimp5.3.0\" \"libassimp5.3.0-dev\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sgriffeth/vulkan_project/build/CMakeFiles /home/sgriffeth/vulkan_project/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sgriffeth/Vulkan-project_0/build/CMakeFiles /home/sgriffeth/Vulkan-project_0/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sgriffeth/vulkan_project/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sgriffeth/Vulkan-project_0/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -175,6 +175,19 @@ MINEANARCHY/fast:
 .PHONY : MINEANARCHY/fast
 
 #=============================================================================
+# Target rules for targets named glm
+
+# Build rule for target.
+glm: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 glm
+.PHONY : glm
+
+# fast build rule for target.
+glm/fast:
+	$(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm.dir/build.make external/glm/glm/CMakeFiles/glm.dir/build
+.PHONY : glm/fast
+
+#=============================================================================
 # Target rules for targets named uninstall
 
 # Build rule for target.
@@ -184,34 +197,8 @@ uninstall: cmake_check_build_system
 
 # fast build rule for target.
 uninstall/fast:
-	$(MAKE) $(MAKESILENT) -f external/glm/CMakeFiles/uninstall.dir/build.make external/glm/CMakeFiles/uninstall.dir/build
+	$(MAKE) $(MAKESILENT) -f external/assimp/CMakeFiles/uninstall.dir/build.make external/assimp/CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
-
-#=============================================================================
-# Target rules for targets named glm_shared
-
-# Build rule for target.
-glm_shared: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 glm_shared
-.PHONY : glm_shared
-
-# fast build rule for target.
-glm_shared/fast:
-	$(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm_shared.dir/build.make external/glm/glm/CMakeFiles/glm_shared.dir/build
-.PHONY : glm_shared/fast
-
-#=============================================================================
-# Target rules for targets named zlibstatic
-
-# Build rule for target.
-zlibstatic: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 zlibstatic
-.PHONY : zlibstatic
-
-# fast build rule for target.
-zlibstatic/fast:
-	$(MAKE) $(MAKESILENT) -f external/assimp/contrib/zlib/CMakeFiles/zlibstatic.dir/build.make external/assimp/contrib/zlib/CMakeFiles/zlibstatic.dir/build
-.PHONY : zlibstatic/fast
 
 #=============================================================================
 # Target rules for targets named assimp
@@ -239,6 +226,30 @@ unit/fast:
 	$(MAKE) $(MAKESILENT) -f external/assimp/test/CMakeFiles/unit.dir/build.make external/assimp/test/CMakeFiles/unit.dir/build
 .PHONY : unit/fast
 
+HelloTriangleApplication.o: HelloTriangleApplication.cpp.o
+.PHONY : HelloTriangleApplication.o
+
+# target to build an object file
+HelloTriangleApplication.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.o
+.PHONY : HelloTriangleApplication.cpp.o
+
+HelloTriangleApplication.i: HelloTriangleApplication.cpp.i
+.PHONY : HelloTriangleApplication.i
+
+# target to preprocess a source file
+HelloTriangleApplication.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.i
+.PHONY : HelloTriangleApplication.cpp.i
+
+HelloTriangleApplication.s: HelloTriangleApplication.cpp.s
+.PHONY : HelloTriangleApplication.s
+
+# target to generate assembly for a file
+HelloTriangleApplication.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/HelloTriangleApplication.cpp.s
+.PHONY : HelloTriangleApplication.cpp.s
+
 descriptorManager.o: descriptorManager.cpp.o
 .PHONY : descriptorManager.o
 
@@ -262,6 +273,174 @@ descriptorManager.s: descriptorManager.cpp.s
 descriptorManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/descriptorManager.cpp.s
 .PHONY : descriptorManager.cpp.s
+
+external/imgui/backends/imgui_impl_glfw.o: external/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : external/imgui/backends/imgui_impl_glfw.o
+
+# target to build an object file
+external/imgui/backends/imgui_impl_glfw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : external/imgui/backends/imgui_impl_glfw.cpp.o
+
+external/imgui/backends/imgui_impl_glfw.i: external/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : external/imgui/backends/imgui_impl_glfw.i
+
+# target to preprocess a source file
+external/imgui/backends/imgui_impl_glfw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : external/imgui/backends/imgui_impl_glfw.cpp.i
+
+external/imgui/backends/imgui_impl_glfw.s: external/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : external/imgui/backends/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+external/imgui/backends/imgui_impl_glfw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : external/imgui/backends/imgui_impl_glfw.cpp.s
+
+external/imgui/backends/imgui_impl_vulkan.o: external/imgui/backends/imgui_impl_vulkan.cpp.o
+.PHONY : external/imgui/backends/imgui_impl_vulkan.o
+
+# target to build an object file
+external/imgui/backends/imgui_impl_vulkan.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.o
+.PHONY : external/imgui/backends/imgui_impl_vulkan.cpp.o
+
+external/imgui/backends/imgui_impl_vulkan.i: external/imgui/backends/imgui_impl_vulkan.cpp.i
+.PHONY : external/imgui/backends/imgui_impl_vulkan.i
+
+# target to preprocess a source file
+external/imgui/backends/imgui_impl_vulkan.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.i
+.PHONY : external/imgui/backends/imgui_impl_vulkan.cpp.i
+
+external/imgui/backends/imgui_impl_vulkan.s: external/imgui/backends/imgui_impl_vulkan.cpp.s
+.PHONY : external/imgui/backends/imgui_impl_vulkan.s
+
+# target to generate assembly for a file
+external/imgui/backends/imgui_impl_vulkan.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/backends/imgui_impl_vulkan.cpp.s
+.PHONY : external/imgui/backends/imgui_impl_vulkan.cpp.s
+
+external/imgui/imgui.o: external/imgui/imgui.cpp.o
+.PHONY : external/imgui/imgui.o
+
+# target to build an object file
+external/imgui/imgui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.o
+.PHONY : external/imgui/imgui.cpp.o
+
+external/imgui/imgui.i: external/imgui/imgui.cpp.i
+.PHONY : external/imgui/imgui.i
+
+# target to preprocess a source file
+external/imgui/imgui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.i
+.PHONY : external/imgui/imgui.cpp.i
+
+external/imgui/imgui.s: external/imgui/imgui.cpp.s
+.PHONY : external/imgui/imgui.s
+
+# target to generate assembly for a file
+external/imgui/imgui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui.cpp.s
+.PHONY : external/imgui/imgui.cpp.s
+
+external/imgui/imgui_demo.o: external/imgui/imgui_demo.cpp.o
+.PHONY : external/imgui/imgui_demo.o
+
+# target to build an object file
+external/imgui/imgui_demo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.o
+.PHONY : external/imgui/imgui_demo.cpp.o
+
+external/imgui/imgui_demo.i: external/imgui/imgui_demo.cpp.i
+.PHONY : external/imgui/imgui_demo.i
+
+# target to preprocess a source file
+external/imgui/imgui_demo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.i
+.PHONY : external/imgui/imgui_demo.cpp.i
+
+external/imgui/imgui_demo.s: external/imgui/imgui_demo.cpp.s
+.PHONY : external/imgui/imgui_demo.s
+
+# target to generate assembly for a file
+external/imgui/imgui_demo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_demo.cpp.s
+.PHONY : external/imgui/imgui_demo.cpp.s
+
+external/imgui/imgui_draw.o: external/imgui/imgui_draw.cpp.o
+.PHONY : external/imgui/imgui_draw.o
+
+# target to build an object file
+external/imgui/imgui_draw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.o
+.PHONY : external/imgui/imgui_draw.cpp.o
+
+external/imgui/imgui_draw.i: external/imgui/imgui_draw.cpp.i
+.PHONY : external/imgui/imgui_draw.i
+
+# target to preprocess a source file
+external/imgui/imgui_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.i
+.PHONY : external/imgui/imgui_draw.cpp.i
+
+external/imgui/imgui_draw.s: external/imgui/imgui_draw.cpp.s
+.PHONY : external/imgui/imgui_draw.s
+
+# target to generate assembly for a file
+external/imgui/imgui_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_draw.cpp.s
+.PHONY : external/imgui/imgui_draw.cpp.s
+
+external/imgui/imgui_tables.o: external/imgui/imgui_tables.cpp.o
+.PHONY : external/imgui/imgui_tables.o
+
+# target to build an object file
+external/imgui/imgui_tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.o
+.PHONY : external/imgui/imgui_tables.cpp.o
+
+external/imgui/imgui_tables.i: external/imgui/imgui_tables.cpp.i
+.PHONY : external/imgui/imgui_tables.i
+
+# target to preprocess a source file
+external/imgui/imgui_tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.i
+.PHONY : external/imgui/imgui_tables.cpp.i
+
+external/imgui/imgui_tables.s: external/imgui/imgui_tables.cpp.s
+.PHONY : external/imgui/imgui_tables.s
+
+# target to generate assembly for a file
+external/imgui/imgui_tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_tables.cpp.s
+.PHONY : external/imgui/imgui_tables.cpp.s
+
+external/imgui/imgui_widgets.o: external/imgui/imgui_widgets.cpp.o
+.PHONY : external/imgui/imgui_widgets.o
+
+# target to build an object file
+external/imgui/imgui_widgets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.o
+.PHONY : external/imgui/imgui_widgets.cpp.o
+
+external/imgui/imgui_widgets.i: external/imgui/imgui_widgets.cpp.i
+.PHONY : external/imgui/imgui_widgets.i
+
+# target to preprocess a source file
+external/imgui/imgui_widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.i
+.PHONY : external/imgui/imgui_widgets.cpp.i
+
+external/imgui/imgui_widgets.s: external/imgui/imgui_widgets.cpp.s
+.PHONY : external/imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+external/imgui/imgui_widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MINEANARCHY.dir/build.make CMakeFiles/MINEANARCHY.dir/external/imgui/imgui_widgets.cpp.s
+.PHONY : external/imgui/imgui_widgets.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -326,12 +505,35 @@ help:
 	@echo "... uninstall"
 	@echo "... MINEANARCHY"
 	@echo "... assimp"
-	@echo "... glm_shared"
+	@echo "... glm"
 	@echo "... unit"
-	@echo "... zlibstatic"
+	@echo "... HelloTriangleApplication.o"
+	@echo "... HelloTriangleApplication.i"
+	@echo "... HelloTriangleApplication.s"
 	@echo "... descriptorManager.o"
 	@echo "... descriptorManager.i"
 	@echo "... descriptorManager.s"
+	@echo "... external/imgui/backends/imgui_impl_glfw.o"
+	@echo "... external/imgui/backends/imgui_impl_glfw.i"
+	@echo "... external/imgui/backends/imgui_impl_glfw.s"
+	@echo "... external/imgui/backends/imgui_impl_vulkan.o"
+	@echo "... external/imgui/backends/imgui_impl_vulkan.i"
+	@echo "... external/imgui/backends/imgui_impl_vulkan.s"
+	@echo "... external/imgui/imgui.o"
+	@echo "... external/imgui/imgui.i"
+	@echo "... external/imgui/imgui.s"
+	@echo "... external/imgui/imgui_demo.o"
+	@echo "... external/imgui/imgui_demo.i"
+	@echo "... external/imgui/imgui_demo.s"
+	@echo "... external/imgui/imgui_draw.o"
+	@echo "... external/imgui/imgui_draw.i"
+	@echo "... external/imgui/imgui_draw.s"
+	@echo "... external/imgui/imgui_tables.o"
+	@echo "... external/imgui/imgui_tables.i"
+	@echo "... external/imgui/imgui_tables.s"
+	@echo "... external/imgui/imgui_widgets.o"
+	@echo "... external/imgui/imgui_widgets.i"
+	@echo "... external/imgui/imgui_widgets.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

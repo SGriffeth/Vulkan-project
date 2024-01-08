@@ -7,7 +7,12 @@ set(FRAGMENT_SHADER "${PROJECT_SOURCE_DIR}/shaders/frag.glsl")
 
 configure_file(${PROJECT_SOURCE_DIR}/config/${PROJECT_NAME}Config.h.in ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}Config.h)
 
-add_executable(${PROJECT_NAME} main.cpp descriptorManager.cpp skeletalAnimation.cpp)
+add_executable(${PROJECT_NAME} main.cpp HelloTriangleApplication.cpp descriptorManager.cpp skeletalAnimation.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/imgui.h ${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/imgui.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/imgui_demo.cpp ${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/imgui_draw.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/imgui_tables.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/imgui_widgets.cpp ${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/backends/imgui_impl_vulkan.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/backends/imgui_impl_glfw.cpp)
 
 add_subdirectory(external/glm)
 add_subdirectory(external/assimp)
@@ -40,3 +45,4 @@ target_link_libraries(${PROJECT_NAME} PRIVATE assimp)
 
 target_include_directories(${PROJECT_NAME} PRIVATE external/glm)
 target_include_directories(${PROJECT_NAME} PRIVATE Vulkan)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/external/imgui)

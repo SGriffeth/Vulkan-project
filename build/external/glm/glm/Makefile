@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sgriffeth/vulkan_project
+CMAKE_SOURCE_DIR = /home/sgriffeth/Vulkan-project_0
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sgriffeth/vulkan_project/build
+CMAKE_BINARY_DIR = /home/sgriffeth/Vulkan-project_0/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,7 +87,7 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\" \"assimp-dev\" \"libassimp5.3.0\" \"libassimp5.3.0-dev\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"assimp-dev\" \"libassimp5.3.0\" \"libassimp5.3.0-dev\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/sgriffeth/vulkan_project/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/sgriffeth/vulkan_project/build/CMakeFiles /home/sgriffeth/vulkan_project/build/external/glm/glm//CMakeFiles/progress.marks
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sgriffeth/vulkan_project/build/CMakeFiles 0
+	cd /home/sgriffeth/Vulkan-project_0/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/sgriffeth/Vulkan-project_0/build/CMakeFiles /home/sgriffeth/Vulkan-project_0/build/external/glm/glm//CMakeFiles/progress.marks
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sgriffeth/Vulkan-project_0/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/clean
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,39 +148,39 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/preinstall
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/preinstall
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/sgriffeth/vulkan_project/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/sgriffeth/Vulkan-project_0/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-external/glm/glm/CMakeFiles/glm_shared.dir/rule:
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/CMakeFiles/glm_shared.dir/rule
-.PHONY : external/glm/glm/CMakeFiles/glm_shared.dir/rule
+external/glm/glm/CMakeFiles/glm.dir/rule:
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/glm/glm/CMakeFiles/glm.dir/rule
+.PHONY : external/glm/glm/CMakeFiles/glm.dir/rule
 
 # Convenience name for target.
-glm_shared: external/glm/glm/CMakeFiles/glm_shared.dir/rule
-.PHONY : glm_shared
+glm: external/glm/glm/CMakeFiles/glm.dir/rule
+.PHONY : glm
 
 # fast build rule for target.
-glm_shared/fast:
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm_shared.dir/build.make external/glm/glm/CMakeFiles/glm_shared.dir/build
-.PHONY : glm_shared/fast
+glm/fast:
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm.dir/build.make external/glm/glm/CMakeFiles/glm.dir/build
+.PHONY : glm/fast
 
 detail/glm.o: detail/glm.cpp.o
 .PHONY : detail/glm.o
 
 # target to build an object file
 detail/glm.cpp.o:
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm_shared.dir/build.make external/glm/glm/CMakeFiles/glm_shared.dir/detail/glm.cpp.o
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm.dir/build.make external/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o
 .PHONY : detail/glm.cpp.o
 
 detail/glm.i: detail/glm.cpp.i
@@ -188,7 +188,7 @@ detail/glm.i: detail/glm.cpp.i
 
 # target to preprocess a source file
 detail/glm.cpp.i:
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm_shared.dir/build.make external/glm/glm/CMakeFiles/glm_shared.dir/detail/glm.cpp.i
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm.dir/build.make external/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.i
 .PHONY : detail/glm.cpp.i
 
 detail/glm.s: detail/glm.cpp.s
@@ -196,7 +196,7 @@ detail/glm.s: detail/glm.cpp.s
 
 # target to generate assembly for a file
 detail/glm.cpp.s:
-	cd /home/sgriffeth/vulkan_project/build && $(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm_shared.dir/build.make external/glm/glm/CMakeFiles/glm_shared.dir/detail/glm.cpp.s
+	cd /home/sgriffeth/Vulkan-project_0/build && $(MAKE) $(MAKESILENT) -f external/glm/glm/CMakeFiles/glm.dir/build.make external/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.s
 .PHONY : detail/glm.cpp.s
 
 # Help Target
@@ -211,7 +211,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... glm_shared"
+	@echo "... glm"
 	@echo "... detail/glm.o"
 	@echo "... detail/glm.i"
 	@echo "... detail/glm.s"
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/sgriffeth/vulkan_project/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/sgriffeth/Vulkan-project_0/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -9,6 +9,18 @@
 #include <deque>
 #include <functional>
 
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
+
+#ifndef SKELETAL_ANIMATION
+#include <skeletalAnimation.h>
+#define SKELETAL_ANIMATION
+#endif
+#include <descriptorManager.h>
+
+#include <backends/imgui_impl_vulkan.h>
+
+
 struct QueueFamilyIndices {
     std::optional<uint32_t> graphicsFamily;
     std::optional<uint32_t> presentFamily;
@@ -44,19 +56,50 @@ struct DeletionQueue
 
 class HelloTriangleApplication {
 public:
+    GLFWwindow* window;
+    std::vector<VkDescriptorSet> mvpSets;
+    std::vector<VkDescriptorSet> bonesSets;
+    VkDescriptorPool imguiPool;
+    VkFence _immFence;
+    VkCommandBuffer _immCommandBuffer;
+    VkCommandPool _immCommandPool;
+    HelloTriangleApplication(GLFWcursorposfun mouse_callback, GLFWkeyfun key_callback, GLFWcursorenterfun cursor_enter_callback, GLFWframebuffersizefun frameBufferResizeCallback);
+    HelloTriangleApplication();
+    void immediate_submit(std::function<void(VkCommandBuffer cmd)>&& function);
+    void setCallbacks(GLFWcursorposfun mouse_callback, GLFWkeyfun key_callback, GLFWcursorenterfun cursor_enter_callback, GLFWframebuffersizefun frameBufferResizeCallback);
     void run();
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
     VkDevice device;
     const int MAX_FRAMES_IN_FLIGHT = 2;
     DeletionQueue deletionQueue;
+    bool framebufferResized = false;
+    struct PlayerState {
+        glm::vec3 cameraFront;
+        glm::vec3 cameraPos;
+        glm::vec3 cameraUp;
+        glm::vec3 cameraRight;
+        glm::vec3 worldUp = glm::vec3(0, 1, 0);
+        float movementPerUpdate = 0.01f;
+    } playerState;
 
 private:
-    GLFWwindow* window;
+    GLFWcursorposfun mouse_callback;
+    GLFWkeyfun key_callback;
+    GLFWcursorenterfun cursor_enter_callback;
+    GLFWframebuffersizefun  frameBufferResizeCallback;
+
+    const uint32_t WIDTH = 800;
+    const uint32_t HEIGHT = 600;
+
+    skeletalAnimation skelAnim = skeletalAnimation("../anims/pine/scene.gltf");
+    descriptorManager descriptorMan;
 
     VkInstance instance;
     VkDebugUtilsMessengerEXT debugMessenger;
     VkSurfaceKHR surface;
 
+    QueueFamilyIndices indices;
+    uint imageCount;
     VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
 
     VkQueue graphicsQueue;
@@ -86,9 +129,9 @@ private:
     std::vector<VkSemaphore> renderFinishedSemaphores;
     std::vector<VkFence> inFlightFences;
     uint32_t currentFrame = 0;
-
-    bool framebufferResized = false;
-
+    
+    void initImGui();
+    void processInput(GLFWwindow* window);
     void initWindow();
     void initVulkan();
     void mainLoop();
@@ -149,10 +192,5 @@ private:
         std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
 
         return VK_FALSE;
-    }
-
-    static void framebufferResizeCallback(GLFWwindow* window, int width, int height) {
-        auto app = reinterpret_cast<HelloTriangleApplication*>(glfwGetWindowUserPointer(window));
-        app->framebufferResized = true;
     }
 };
