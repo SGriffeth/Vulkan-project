@@ -10,9 +10,9 @@ descriptorManager::descriptorManager() {
     layouts.resize(2);
 }
 
-void descriptorManager::allocateUbos(HelloTriangleApplication& app) {
+void descriptorManager::allocateUbos(HelloTriangleApplication& app, uint boneCount) {
     VkDeviceSize mvpSize = sizeof(mvpBuffer);
-    VkDeviceSize boneSize = sizeof(boneBuffer);
+    VkDeviceSize boneSize = sizeof(aiMatrix4x4)*boneCount;
 
     mvpUbos.resize(app.MAX_FRAMES_IN_FLIGHT);
     boneUbos.resize(app.MAX_FRAMES_IN_FLIGHT);
@@ -33,7 +33,7 @@ void descriptorManager::allocateUbos(HelloTriangleApplication& app) {
     }
 }
 
-void descriptorManager::createDescriptorSets(HelloTriangleApplication& app, std::vector<VkDescriptorSet>& mvpSets, std::vector<VkDescriptorSet>& bonesSets) {
+void descriptorManager::createDescriptorSets(HelloTriangleApplication& app, std::vector<VkDescriptorSet>& mvpSets, std::vector<VkDescriptorSet>& bonesSets, uint boneCount) {
     mvpSets.resize(app.MAX_FRAMES_IN_FLIGHT);
     bonesSets.resize(app.MAX_FRAMES_IN_FLIGHT);
     VkDescriptorPoolSize poolSize = {};
@@ -52,7 +52,7 @@ void descriptorManager::createDescriptorSets(HelloTriangleApplication& app, std:
 
     VkDescriptorPoolSize bonesPoolSize = {};
     bonesPoolSize.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-    bonesPoolSize.descriptorCount = app.MAX_FRAMES_IN_FLIGHT*BONES_COUNT;
+    bonesPoolSize.descriptorCount = app.MAX_FRAMES_IN_FLIGHT;
 
     VkDescriptorPoolCreateInfo bonesCreateInfo = {};
     bonesCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
@@ -89,7 +89,7 @@ void descriptorManager::createDescriptorSets(HelloTriangleApplication& app, std:
             vkDestroyDescriptorPool(app.device, bonesPool, nullptr);
     });
 
-    allocateUbos(app);
+    allocateUbos(app, boneCount);
 
     for(unsigned int i = 0; i < app.MAX_FRAMES_IN_FLIGHT; i++) {
         VkDescriptorBufferInfo mvpBufferInfo = {};
@@ -100,7 +100,43 @@ void descriptorManager::createDescriptorSets(HelloTriangleApplication& app, std:
         VkDescriptorBufferInfo bonesBufferInfo = {};
         bonesBufferInfo.buffer = boneUbos[i].buffer;
         bonesBufferInfo.offset = 0;
-        bonesBufferInfo.range = sizeof(boneBuffer);
+        bonesBufferInfo.range = sizeof(aiMatrix4x4)*boneCount;
+
+        VkWriteDescriptorSet mvpDescriptorWrite{};
+        mvpDescriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+        mvpDescriptorWrite.dstSet = mvpSets[i];
+        mvpDescriptorWrite.dstBinding = 0;
+        mvpDescriptorWrite.dstArrayElement = 0;
+        mvpDescriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+        mvpDescriptorWrite.descriptorCount = 1;
+        mvpDescriptorWrite.pBufferInfo = &mvpBufferInfo;
+
+        VkWriteDescriptorSet bonesDescriptorWrite{};
+        bonesDescriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+        bonesDescriptorWrite.dstSet = bonesSets[i];
+        bonesDescriptorWrite.dstBinding = 0;
+        bonesDescriptorWrite.dstArrayElement = 0;
+        bonesDescriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+        bonesDescriptorWrite.descriptorCount = 1;
+        bonesDescriptorWrite.pBufferInfo = &bonesBufferInfo;
+
+        VkWriteDescriptorSet descriptorWrites[] = {bonesDescriptorWrite, mvpDescriptorWrite};
+
+        vkUpdateDescriptorSets(app.device, 2, descriptorWrites, 0, nullptr);
+    }
+}
+
+void descriptorManager::updateDescriptorSets(HelloTriangleApplication& app, std::vector<VkDescriptorSet>& mvpSets, std::vector<VkDescriptorSet>& bonesSets, uint boneCount) {
+    for(unsigned int i = 0; i < app.MAX_FRAMES_IN_FLIGHT; i++) {
+        VkDescriptorBufferInfo mvpBufferInfo = {};
+        mvpBufferInfo.buffer = mvpUbos[i].buffer;
+        mvpBufferInfo.offset = 0;
+        mvpBufferInfo.range = sizeof(mvpBuffer);
+
+        VkDescriptorBufferInfo bonesBufferInfo = {};
+        bonesBufferInfo.buffer = boneUbos[i].buffer;
+        bonesBufferInfo.offset = 0;
+        bonesBufferInfo.range = sizeof(aiMatrix4x4)*boneCount;
 
         VkWriteDescriptorSet mvpDescriptorWrite{};
         mvpDescriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -170,7 +206,7 @@ VkDescriptorSetLayout* descriptorManager::createDescriptorSetLayouts(HelloTriang
     return layouts.data();
 }
 
-void descriptorManager::updateUbos(boneBuffer bones, mvpBuffer mvp, uint currentImage) {
-    memcpy(boneUbos[currentImage].bufferMapped, &bones, sizeof(boneBuffer));
+void descriptorManager::updateUbos(std::vector<aiMatrix4x4>& bones, mvpBuffer mvp, uint currentImage) {
+    memcpy(boneUbos[currentImage].bufferMapped, bones.data(), bones.size()*sizeof(aiMatrix4x4));
     memcpy(mvpUbos[currentImage].bufferMapped, &mvp, sizeof(mvpBuffer));
 }

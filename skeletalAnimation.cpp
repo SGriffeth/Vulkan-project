@@ -32,6 +32,28 @@ uint skeletalAnimation::FindPosition(float AnimationTimeTicks, const aiNodeAnim*
     return 0;
 }
 
+void skeletalAnimation::loadAnimation(std::string path) {
+    asmpScene = importer.ReadFile(path,
+    //aiProcess_CalcTangentSpace       |
+    aiProcess_Triangulate            |
+    aiProcess_JoinIdenticalVertices  |
+    aiProcess_SortByPType);
+
+    if(asmpScene == nullptr) {
+        throw std::runtime_error("Failed to read file " + std::string(importer.GetErrorString()));
+    }
+
+    scene.bone_name_to_index_map.clear();
+    scene.bones.resize(0, skeletalAnimation::Scene::BoneInfo(aiMatrix4x4()));
+    //scene.globalTransforms.resize(0);
+    scene.hierarchy.resize(0);
+    scene.indices.resize(0);
+    //scene.localTransforms.resize(0);
+    scene.mesh_base_vertex.resize(0);
+    scene.vertices.resize(0);
+
+    convertScene();
+}
 
 void skeletalAnimation::CalcInterpolatedPosition(aiVector3D& Out, float AnimationTimeTicks, const aiNodeAnim* pNodeAnim)
 {
@@ -159,15 +181,35 @@ void skeletalAnimation::loadMeshes() {
     }
 }
 
+aiNodeAnim* skeletalAnimation::findNodeAnim(const char* nodeName) {
+    if(scene.animationIndex < 0) return nullptr;
+    //std::cout << "Node name pointer: " << (void*)nodeName << std::endl;
+    aiAnimation& anim = *(asmpScene->mAnimations[scene.animationIndex]);
+    for(uint i = 0; i < anim.mNumChannels; i++) {
+        //std::cout << std::string(nodeName) << ", " << std::string(anim.mChannels[i]->mNodeName.C_Str()) << std::endl;
+        if(strcmp(anim.mChannels[i]->mNodeName.C_Str(), nodeName) == 0) {
+            return anim.mChannels[i];
+        }
+    }
+    return nullptr;
+}
+
 // (1) convert N-ary tree to left child right sibling
 // (2) move bone-vertex information into a linear array
 void skeletalAnimation::convertScene() {
+    if(asmpScene->mNumAnimations > 0) {
+        scene.animationIndex = 0;
+        scene.animationDuration = asmpScene->mAnimations[scene.animationIndex]->mDuration;
+    }
+    scene.globalInverseTransform = asmpScene->mRootNode->mTransformation;
+    scene.globalInverseTransform.Inverse();
     std::stack<aiNode*> s;
     s.push(asmpScene->mRootNode);
     struct Node root;
-    root.name = std::string(asmpScene->mName.C_Str());
+    root.name = std::string(asmpScene->mRootNode->mName.C_Str());
     root.firstChild = asmpScene->mRootNode->mNumChildren ? 1 : -1;
     root.nextSibling = -1;
+    root.transformation = asmpScene->mRootNode->mTransformation;
     root.parent = -1;
     scene.hierarchy.push_back(root);
     while(!s.empty()) {
@@ -179,16 +221,15 @@ void skeletalAnimation::convertScene() {
             struct Node someChild;
             someChild.name = std::string(top->mChildren[i]->mName.C_Str());
             someChild.parent = currentIndex-1;
+            someChild.transformation = top->mTransformation;
             someChild.nextSibling = i < top->mNumChildren-1 ? currentIndex+i+1 : -1; // Checks if there is a next sibling
             someChild.firstChild = -1; // if someChild has no children this will stay at -1
             scene.hierarchy[someChild.parent].firstChild = currentIndex; // set's the first child of the parent to the first of mChildren
             scene.hierarchy.push_back(someChild);
-            scene.localTransforms.push_back(top->mTransformation);
-            scene.globalTransforms.push_back(aiMatrix4x4());
         }
     }
     
-    scene.vertices = {
+    /*scene.vertices = {
         {{-0.5f, -1.5f, 0.1f}},
         {{0.5f, -1.5f, 0.1f}},
         {{0.5f, 0.5f, 0.1f}},
@@ -197,26 +238,48 @@ void skeletalAnimation::convertScene() {
 
     scene.indices = {
         0, 1, 2, 2, 3, 0
-    };
-    //loadMeshes();
+    };*/
+    loadMeshes();
 }
 
-void skeletalAnimation::traverse() {
-    std::stack<Node*> s;
-    s.push(&scene.root);
+void skeletalAnimation::traverse(float animationTime) {
+    std::stack<uint> s;
+    s.push(0); // index of the root node
     while (!s.empty())
     {
-        Node* top = s.top();
+        uint top = s.top();
         s.pop();
-        aiMatrix4x4 globalTransform = top->transformation;
-        if(top->parent > -1) {
-            globalTransform *= scene.hierarchy[top->parent].transformation;
-            if(scene.bone_name_to_index_map.find(top->name) != scene.bone_name_to_index_map.end()) {
-                uint boneIndex = scene.bone_name_to_index_map[top->name];
-                scene.bones[boneIndex].FinalTransformation = globalTransform * scene.bones[boneIndex].OffsetMatrix;
-            }
+        //std::cout << "Node name: " << top->name << std::endl;
+        /*aiNodeAnim* nodeAnim = findNodeAnim(scene.hierarchy[top].name.c_str());
+        if(nodeAnim) {
+            std::cout << "Found a node animation" << std::endl;
+            aiVector3D Scaling;
+            CalcInterpolatedScaling(Scaling, animationTime, nodeAnim);
+            aiMatrix4x4 ScalingM;
+            ScalingM.Scaling(Scaling, ScalingM);
+
+            // Interpolate rotation and generate rotation transformation matrix
+            aiQuaternion RotationQ;
+            CalcInterpolatedRotation(RotationQ, animationTime, nodeAnim);
+            aiMatrix4x4 RotationM = aiMatrix4x4(RotationQ.GetMatrix());
+
+            // Interpolate translation and generate translation transformation matrix
+            aiVector3D Translation;
+            CalcInterpolatedPosition(Translation, animationTime, nodeAnim);
+            aiMatrix4x4 TranslationM;
+            TranslationM.Translation(Translation, TranslationM);
+
+            // Combine the above transformations
+            scene.hierarchy[top].transformation = TranslationM * RotationM * ScalingM;
+        }*/
+        if(scene.hierarchy[top].parent > -1) {
+            scene.hierarchy[top].transformation *= scene.hierarchy[scene.hierarchy[top].parent].transformation;
         }
-        if (top->nextSibling) s.push(&scene.hierarchy[top->nextSibling]);
-        if (top->firstChild) s.push(&scene.hierarchy[top->firstChild]);
+        if(scene.bone_name_to_index_map.find(scene.hierarchy[top].name) != scene.bone_name_to_index_map.end()) {
+            uint boneIndex = scene.bone_name_to_index_map[scene.hierarchy[top].name];
+            scene.finalTransforms[boneIndex] = scene.globalInverseTransform * scene.hierarchy[top].transformation * scene.bones[boneIndex].OffsetMatrix;
+        }
+        if (scene.hierarchy[top].nextSibling > -1) s.push(scene.hierarchy[top].nextSibling);
+        if (scene.hierarchy[top].firstChild > -1) s.push(scene.hierarchy[top].firstChild);
     }
 }

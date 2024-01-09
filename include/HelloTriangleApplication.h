@@ -79,6 +79,7 @@ public:
         glm::vec3 cameraUp;
         glm::vec3 cameraRight;
         glm::vec3 worldUp = glm::vec3(0, 1, 0);
+        float cameraFov = 45;
         float movementPerUpdate = 0.01f;
     } playerState;
 
@@ -91,7 +92,7 @@ private:
     const uint32_t WIDTH = 800;
     const uint32_t HEIGHT = 600;
 
-    skeletalAnimation skelAnim = skeletalAnimation("../anims/pine/scene.gltf");
+    skeletalAnimation skelAnim = skeletalAnimation("../anims/dragon/Dragon.dae");
     descriptorManager descriptorMan;
 
     VkInstance instance;
@@ -129,11 +130,21 @@ private:
     std::vector<VkSemaphore> renderFinishedSemaphores;
     std::vector<VkFence> inFlightFences;
     uint32_t currentFrame = 0;
+
+    struct AnimationManager {
+        static const size_t pathLength = 128;
+        char path[pathLength];
+        float scale;
+        void loadAnimation(skeletalAnimation& _skelAnim) {
+            _skelAnim.loadAnimation(std::string(path));
+        }
+    } animManager;
     
     void initImGui();
     void processInput(GLFWwindow* window);
     void initWindow();
     void initVulkan();
+    void imGuiNewFrame();
     void mainLoop();
     void updateUbos();
     void cleanupSwapChain();
@@ -153,6 +164,8 @@ private:
     void createCommandPool();
     void createVertexBuffer();
     void createIndexBuffer();
+    void updateVertexBuffer();
+    void updateIndexBuffer();
     void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
     uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
     void createCommandBuffers();

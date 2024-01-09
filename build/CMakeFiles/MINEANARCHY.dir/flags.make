@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/sgriffeth/Vulkan-project_0/include -I/home/sgriffeth/Vulkan-project_0/external/glm -I/home/sgriffeth/Vulkan-project_0/Vulkan -I/home/sgriffeth/Vulkan-project_0/external/imgui -I/home/sgriffeth/Vulkan-project_0/external/assimp/code/../include -I/home/sgriffeth/Vulkan-project_0/build/external/assimp/code/../include
 
-CXX_FLAGS = 
+CXX_FLAGS = -g
 

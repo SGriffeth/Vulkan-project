@@ -7,11 +7,11 @@ C_DEFINES = -DASSIMP_BUILD_NO_C4D_IMPORTER -DASSIMP_BUILD_NO_M3D_EXPORTER -DASSI
 
 C_INCLUDES = -I/home/sgriffeth/Vulkan-project_0/build/external/assimp/include -I/home/sgriffeth/Vulkan-project_0/build/external/assimp -I/home/sgriffeth/Vulkan-project_0/external/assimp/include -I/home/sgriffeth/Vulkan-project_0/external/assimp/code -I/home/sgriffeth/Vulkan-project_0/external/assimp/. -I/home/sgriffeth/Vulkan-project_0/external/assimp/test/unit -I/home/sgriffeth/Vulkan-project_0/external/assimp/contrib/googletest/googletest/include -I/home/sgriffeth/Vulkan-project_0/external/assimp/contrib/googletest/googletest -I/home/sgriffeth/Vulkan-project_0/external/assimp/contrib/pugixml/src -I/home/sgriffeth/Vulkan-project_0/external/assimp/test/../contrib/rapidjson/include -I/home/sgriffeth/Vulkan-project_0/external/assimp/code/../include -I/home/sgriffeth/Vulkan-project_0/build/external/assimp/code/../include
 
-C_FLAGS = -fno-strict-aliasing  -std=gnu99 -fPIE -Wall -Werror
+C_FLAGS = -fno-strict-aliasing  -g -std=gnu99 -fPIE -Wall -Werror
 
 CXX_DEFINES = -DASSIMP_BUILD_NO_C4D_IMPORTER -DASSIMP_BUILD_NO_M3D_EXPORTER -DASSIMP_BUILD_NO_M3D_IMPORTER -DASSIMP_BUILD_NO_OWN_ZLIB -DASSIMP_TEST_MODELS_DIR=\"/home/sgriffeth/Vulkan-project_0/external/assimp/test/models\" -DASSIMP_TEST_MODELS_NONBSD_DIR=\"/home/sgriffeth/Vulkan-project_0/external/assimp/test/models-nonbsd\" -DRAPIDJSON_HAS_STDSTRING=1 -DRAPIDJSON_NOMEMBERITERATORCLASS
 
 CXX_INCLUDES = -I/home/sgriffeth/Vulkan-project_0/build/external/assimp/include -I/home/sgriffeth/Vulkan-project_0/build/external/assimp -I/home/sgriffeth/Vulkan-project_0/external/assimp/include -I/home/sgriffeth/Vulkan-project_0/external/assimp/code -I/home/sgriffeth/Vulkan-project_0/external/assimp/. -I/home/sgriffeth/Vulkan-project_0/external/assimp/test/unit -I/home/sgriffeth/Vulkan-project_0/external/assimp/contrib/googletest/googletest/include -I/home/sgriffeth/Vulkan-project_0/external/assimp/contrib/googletest/googletest -I/home/sgriffeth/Vulkan-project_0/external/assimp/contrib/pugixml/src -I/home/sgriffeth/Vulkan-project_0/external/assimp/test/../contrib/rapidjson/include -I/home/sgriffeth/Vulkan-project_0/external/assimp/code/../include -I/home/sgriffeth/Vulkan-project_0/build/external/assimp/code/../include
 
-CXX_FLAGS = -fvisibility=hidden -fno-strict-aliasing -Wall  -std=gnu++17 -fPIE -Wno-dangling-reference -Wall -Werror
+CXX_FLAGS = -fvisibility=hidden -fno-strict-aliasing -Wall  -g -std=gnu++17 -fPIE -Wno-dangling-reference -Wall -Werror
 

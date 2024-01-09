@@ -155,8 +155,8 @@ void HelloTriangleApplication::initVulkan() {
     createImageViews();
     createRenderPass();
     createGraphicsPipeline();
-    skelAnim.traverse();
-    descriptorMan.createDescriptorSets(*this, mvpSets, bonesSets);
+    //skelAnim.traverse();
+    descriptorMan.createDescriptorSets(*this, mvpSets, bonesSets, skelAnim.scene.bones.size());
     createFramebuffers();
     createCommandPool();
     createVertexBuffer();
@@ -176,11 +176,48 @@ void HelloTriangleApplication::processInput(GLFWwindow* window) {
         playerState.cameraPos += glm::normalize(glm::cross(playerState.cameraFront, playerState.cameraUp)) * playerState.movementPerUpdate;
 }
 
+void HelloTriangleApplication::imGuiNewFrame() {
+    //imgui new frame
+    ImGui_ImplVulkan_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+
+    ImGui::NewFrame();
+
+
+    //imgui commands
+    ImGui::ShowDemoWindow();
+    // Create a window called "My First Tool", with a menu bar.
+    bool my_tool_active;
+    ImGui::Begin("Model/Animation manager", &my_tool_active, ImGuiWindowFlags_MenuBar);
+    ImGui::InputText("Enter animation path", animManager.path, animManager.pathLength);
+    ImGui::InputFloat("Model scale", &animManager.scale);
+    ImGui::SliderFloat("FOV", &playerState.cameraFov, 0, 90);
+    if (ImGui::BeginMenuBar())
+    {
+        if (ImGui::BeginMenu("File"))
+        {
+            if (ImGui::MenuItem("Open..", "Ctrl+O")) {
+                animManager.loadAnimation(skelAnim);
+                descriptorMan.updateDescriptorSets(*this, mvpSets, bonesSets, skelAnim.scene.bones.size());
+                updateVertexBuffer();
+                updateIndexBuffer();
+            }
+            if (ImGui::MenuItem("Save", "Ctrl+S"))   { /* Do stuff */ }
+            if (ImGui::MenuItem("Close", "Ctrl+W"))  { my_tool_active = false; }
+            ImGui::EndMenu();
+        }
+        ImGui::EndMenuBar();
+    }
+    ImGui::End();
+    ImGui::Render();
+}
+
 void HelloTriangleApplication::mainLoop() {
     float MS_PER_UPDATE = 0.01f;
     auto previous = std::chrono::high_resolution_clock::now();
 
     float lag = 0.0f;
+    uint tick = 0;
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
         auto current = std::chrono::high_resolution_clock::now();
@@ -190,20 +227,11 @@ void HelloTriangleApplication::mainLoop() {
         while(lag >= MS_PER_UPDATE) {
             processInput(window);
             lag -= MS_PER_UPDATE;
+            tick++;
         }
-
-         //imgui new frame
-        ImGui_ImplVulkan_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-
-		ImGui::NewFrame();
-
-
-        //imgui commands
-        ImGui::ShowDemoWindow();
-        ImGui::Render();
-        //FrameRender(draw_data);
-        //FramePresent();
+        tick %= skelAnim.scene.animationDuration;
+        skelAnim.traverse(tick);
+        imGuiNewFrame();
         drawFrame();
     }
 
@@ -729,6 +757,42 @@ void HelloTriangleApplication::createIndexBuffer() {
     });
 }
 
+void HelloTriangleApplication::updateVertexBuffer() {
+   VkDeviceSize bufferSize = sizeof(skelAnim.scene.vertices[0]) * skelAnim.scene.vertices.size();
+
+    VkBuffer stagingBuffer;
+    VkDeviceMemory stagingBufferMemory;
+    createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, stagingBuffer, stagingBufferMemory);
+
+    void* data;
+    vkMapMemory(device, stagingBufferMemory, 0, bufferSize, 0, &data);
+        memcpy(data, skelAnim.scene.vertices.data(), (size_t) bufferSize);
+    vkUnmapMemory(device, stagingBufferMemory);
+
+    copyBuffer(stagingBuffer, vertexBuffer, bufferSize);
+
+    vkDestroyBuffer(device, stagingBuffer, nullptr);
+    vkFreeMemory(device, stagingBufferMemory, nullptr); 
+}
+
+void HelloTriangleApplication::updateIndexBuffer() {
+    VkDeviceSize bufferSize = sizeof(skelAnim.scene.indices[0]) * skelAnim.scene.indices.size();
+
+    VkBuffer stagingBuffer;
+    VkDeviceMemory stagingBufferMemory;
+    createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, stagingBuffer, stagingBufferMemory);
+
+    void* data;
+    vkMapMemory(device, stagingBufferMemory, 0, bufferSize, 0, &data);
+        memcpy(data, skelAnim.scene.indices.data(), (size_t) bufferSize);
+    vkUnmapMemory(device, stagingBufferMemory);
+
+    copyBuffer(stagingBuffer, indexBuffer, bufferSize);
+
+    vkDestroyBuffer(device, stagingBuffer, nullptr);
+    vkFreeMemory(device, stagingBufferMemory, nullptr); 
+}
+
 void HelloTriangleApplication::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory) {
     VkBufferCreateInfo bufferInfo{};
     bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
@@ -836,10 +900,6 @@ void HelloTriangleApplication::recordCommandBuffer(VkCommandBuffer commandBuffer
 
     vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
-        ImDrawData* draw_data = ImGui::GetDrawData();
-        ImGui_ImplVulkan_RenderDrawData(draw_data, commandBuffer);
-        vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
-
         VkViewport viewport{};
         viewport.x = 0.0f;
         viewport.y = 0.0f;
@@ -863,7 +923,10 @@ void HelloTriangleApplication::recordCommandBuffer(VkCommandBuffer commandBuffer
         vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, &mvpSets[currentFrame], 0, nullptr);
         vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 1, 1, &bonesSets[currentFrame], 0, nullptr);
 
+        vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
         vkCmdDrawIndexed(commandBuffer, static_cast<uint32_t>(skelAnim.scene.indices.size()), 1, 0, 0, 0);
+        ImDrawData* draw_data = ImGui::GetDrawData();
+        ImGui_ImplVulkan_RenderDrawData(draw_data, commandBuffer);
 
     vkCmdEndRenderPass(commandBuffer);
 
@@ -1149,17 +1212,19 @@ void HelloTriangleApplication::run() {
 }
 
 void HelloTriangleApplication::updateUbos() {
-    struct descriptorManager::boneBuffer bones;
+    //struct descriptorManager::boneBuffer bones;
     struct descriptorManager::mvpBuffer mvp;
 
-    for(uint i = 0; i < skelAnim.scene.bones.size(); i++) {
+    //std::cout << "number of bones: " << skelAnim.scene.bones.size() << std::endl;
+    /*for(uint i = 0; i < skelAnim.scene.bones.size(); i++) {
         bones.bones[i] = skelAnim.scene.bones[i].FinalTransformation;
-    }
+    }*/
 
-    mvp.model = glm::mat4(1);
+    mvp.model =
+    glm::scale(glm::mat4(1), glm::vec3(animManager.scale, animManager.scale, animManager.scale));
     mvp.view = glm::lookAt(playerState.cameraPos, playerState.cameraPos + playerState.cameraFront, playerState.cameraUp);
-    mvp.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float) swapChainExtent.height, 0.1f, 10.0f);
+    mvp.proj = glm::perspective(playerState.cameraFov, swapChainExtent.width / (float) swapChainExtent.height, 0.1f, 10.0f);
     mvp.proj[1][1] *= -1;
 
-    descriptorMan.updateUbos(bones, mvp, currentFrame);
+    descriptorMan.updateUbos(skelAnim.scene.finalTransforms, mvp, currentFrame);
 }

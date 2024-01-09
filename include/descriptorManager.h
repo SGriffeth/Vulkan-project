@@ -25,13 +25,9 @@ private:
     std::vector<uboBuffer> mvpUbos;
     std::vector<uboBuffer> boneUbos;
     
-    void allocateUbos(HelloTriangleApplication& app);
+    void allocateUbos(HelloTriangleApplication& app, uint boneCount);
 public:
     descriptorManager();
-    static const unsigned int BONES_COUNT = 100;
-    struct boneBuffer {
-        aiMatrix4x4 bones[descriptorManager::BONES_COUNT];
-    };
 
     struct mvpBuffer {
         glm::mat4 model;
@@ -39,6 +35,7 @@ public:
         glm::mat4 proj;
     };
     VkDescriptorSetLayout* createDescriptorSetLayouts(HelloTriangleApplication& app);
-    void createDescriptorSets(HelloTriangleApplication& app, std::vector<VkDescriptorSet>& mvpSets, std::vector<VkDescriptorSet>& bonesSets);
-    void updateUbos(boneBuffer, mvpBuffer, uint);
+    void createDescriptorSets(HelloTriangleApplication& app, std::vector<VkDescriptorSet>& mvpSets, std::vector<VkDescriptorSet>& bonesSets, uint boneCount);
+    void updateDescriptorSets(HelloTriangleApplication& app, std::vector<VkDescriptorSet>& mvpSets, std::vector<VkDescriptorSet>& bonesSets, uint boneCount);
+    void updateUbos(std::vector<aiMatrix4x4>& bones, mvpBuffer, uint);
 };
